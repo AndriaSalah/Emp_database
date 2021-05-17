@@ -17,13 +17,19 @@ public class AdvancedDb {
     static ArrayList<String> salary = new ArrayList<>();
     static private int pin=0;
     
-    public static void delayer(){
-        in.nextLine();
+    public static void delayer_inp(){
+        
     System.out.println("press any key to get back to the main menu");
-    String delayer= in.nextLine();
+    String delayer_inp= in.nextLine();
     System.out.print("\033[H\033[2J");  
     System.out.flush(); 
 }
+    public static void delayer_timer(){
+    System.out.println("you will be redirected to the main screen now");
+    Thread.sleep(1500);
+    System.out.print("\033[H\033[2J");  
+    System.out.flush(); 
+    }
     private static void pass_create() throws InterruptedException{
         
         boolean cond= true;
@@ -38,10 +44,7 @@ public class AdvancedDb {
         }
         else {System.out.println("incorrect confirmation please try again");}
     }
-    System.out.println("you will be redirected to the main screen now");  
-    Thread.sleep(2000);
-    System.out.print("\033[H\033[2J");  
-    System.out.flush();  
+    delayer_timer();
     }
     private static int pass_verf(int input){
        
@@ -61,13 +64,13 @@ public class AdvancedDb {
         address.add(in.nextLine());   
         System.out.print("salary  :");    
         salary.add(in.nextLine());   
-        delayer();
+        delayer_inp();
     }
     public static void view() throws InterruptedException {
         for (int x = 0; x < names.size() && x < age.size() && x < address.size(); x++) {
 
-            System.out.println("Name :"+names.get(x));
-            System.out.println("Age  :"+age.get(x));
+            System.out.println("Name    :"+names.get(x));
+            System.out.println("Age     :"+age.get(x));
             System.out.println("Address :"+address.get(x) + "\t");
             System.out.println("salary  :" +salary.get(x) + "\n\t");
 
@@ -75,7 +78,7 @@ public class AdvancedDb {
         if (names.isEmpty() && age.isEmpty() && address.isEmpty()) {
             System.out.println("list is empty");
         }
-            delayer();
+            delayer_inp();
     }
     public static void delete() throws InterruptedException {
         int ver;
@@ -98,7 +101,7 @@ public class AdvancedDb {
     }
     else{System.out.println("Access not allowed");}
     System.out.println("press any key to get back to the main menu");  
-    delayer();
+    delayer_inp();
     System.out.print("\033[H\033[2J");  
     System.out.flush();  
     }
@@ -121,7 +124,7 @@ public class AdvancedDb {
             if (names.isEmpty() && age.isEmpty() && address.isEmpty()) {
             System.out.println("list is empty");
             }
-                delayer();  
+                delayer_inp();  
     }
     public static void edit() throws InterruptedException{
         int ver;
@@ -164,19 +167,19 @@ public class AdvancedDb {
         else{System.out.println("Access not allowed");}
         System.out.println("press any key to get back to the main menu");  
         in.nextLine();
-        delayer();
+        delayer_inp();
     }
     public static void annual_increase() throws InterruptedException{
-        System.out.println("enter the name for annual increment  ");
-        String input;
+        //System.out.println("enter the name for annual increment  ");
+        //String input;
 
-        input = in.nextLine();
+        //input = in.nextLine();
         double increment=0;
         double bef=0;
         double total=0;
         String converter;
         for (int x = 0; x < names.size(); x++) {
-            if (input.equals(names.get(x))) {
+            //if (input.equals(names.get(x))) {
                 System.out.println("!!INFO!! ");
                 System.out.println("name :" + names.get(x));
                 System.out.println("salary  :" + salary.get(x));
@@ -190,11 +193,12 @@ public class AdvancedDb {
                 System.out.println("New salary : " + total);
                 converter=Double.toString(total);
                 salary.set(x,converter);
+                System.out.println("\n");
 
-            }
-            else {System.out.println("name not found");}
+            //}
+            //else {System.out.println("name not found");}
         }
-            delayer();
+            delayer_inp();
     }
     public static void main(String[] args) throws InterruptedException {
         System.out.print("\033[H\033[2J");  
@@ -290,5 +294,4 @@ public class AdvancedDb {
 
     }
 
-}
 }
