@@ -26,8 +26,12 @@ public class AdvancedDb {
 }
     public static void delayer_timer(){
     System.out.println("you will be redirected to the main screen now");
-    Thread.sleep(1500);
-    System.out.print("\033[H\033[2J");  
+        try {
+            Thread.sleep(1500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.print("\033[H\033[2J");
     System.out.flush(); 
     }
     private static void pass_create() throws InterruptedException{
